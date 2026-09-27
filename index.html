@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>BlogSpace | Share Your Ideas</title>
+
+<link rel="stylesheet" href="style.css">
+```
+
+</head>
+
+<body>
+
+```
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        Blog<span>Space</span>
+    </div>
+
+    <nav id="navMenu">
+        <a href="#home">Home</a>
+        <a href="#blogs">Blogs</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-buttons">
+
+        <button id="darkModeBtn" class="icon-btn">
+            🌙
+        </button>
+
+        <button id="menuBtn" class="menu-btn">
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+        <p class="eyebrow">
+            WELCOME TO BLOGSPACE
+        </p>
+
+        <h1>
+            Ideas that <span>inspire.</span>
+            Stories that <span>matter.</span>
+        </h1>
+
+        <p class="hero-description">
+            Explore articles, share your ideas and discover
+            something new every day.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#blogs" class="primary-btn">
+                Explore Blogs →
+            </a>
+
+            <button id="heroCreateBtn" class="secondary-btn">
+                Write a Blog
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SEARCH ================= -->
+
+<section class="search-area">
+
+    <div class="search-box">
+
+        <span>🔍</span>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search articles..."
+        >
+
+    </div>
+
+</section>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section id="categories" class="categories section">
+
+    <div class="section-header center">
+
+        <p class="eyebrow">
+            EXPLORE
+        </p>
+
+        <h2>Browse Categories</h2>
+
+        <p>
+            Find articles based on your interests.
+        </p>
+
+    </div>
+
+
+    <div class="category-buttons">
+
+        <button
+            class="category-btn active"
+            data-category="All">
+            All
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="Technology">
+            Technology
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="Programming">
+            Programming
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="Education">
+            Education
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="Lifestyle">
+            Lifestyle
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BLOGS ================= -->
+
+<section id="blogs" class="section blogs-section">
+
+    <div class="section-header blog-heading">
+
+        <div>
+
+            <p class="eyebrow">
+                LATEST ARTICLES
+            </p>
+
+            <h2>Featured Blogs</h2>
+
+        </div>
+
+        <button id="createPostBtn" class="primary-small-btn">
+            + Create Post
+        </button>
+
+    </div>
+
+
+    <!-- Blog cards generated using JavaScript -->
+
+    <div
+        id="blogContainer"
+        class="blog-grid">
+    </div>
+
+</section>
+
+
+<!-- ================= CREATE POST MODAL ================= -->
+
+<div id="postModal" class="modal">
+
+    <div class="modal-content">
+
+        <button id="closePostModal" class="close-btn">
+            ×
+        </button>
+
+        <p class="eyebrow">
+            CREATE
+        </p>
+
+        <h2>Write a New Blog</h2>
+
+        <form id="postForm">
+
+            <label for="postTitle">
+                Blog Title
+            </label>
+
+            <input
+                id="postTitle"
+                type="text"
+                placeholder="Enter your blog title"
+                required
+            >
+
+
+            <label for="postCategory">
+                Category
+            </label>
+
+            <select id="postCategory">
+
+                <option value="Technology">
+                    Technology
+                </option>
+
+                <option value="Programming">
+                    Programming
+                </option>
+
+                <option value="Education">
+                    Education
+                </option>
+
+                <option value="Lifestyle">
+                    Lifestyle
+                </option>
+
+            </select>
+
+
+            <label for="postAuthor">
+                Author
+            </label>
+
+            <input
+                id="postAuthor"
+                type="text"
+                placeholder="Your name"
+                required
+            >
+
+
+            <label for="postContent">
+                Blog Content
+            </label>
+
+            <textarea
+                id="postContent"
+                rows="8"
+                placeholder="Write your article here..."
+                required>
+            </textarea>
+
+
+            <button
+                type="submit"
+                class="submit-btn">
+                Publish Blog
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= BLOG DETAILS MODAL ================= -->
+
+<div id="detailsModal" class="modal">
+
+    <div class="modal-content blog-details">
+
+        <button id="closeDetailsModal" class="close-btn">
+            ×
+        </button>
+
+        <span id="detailsCategory" class="blog-category">
+        </span>
+
+        <h2 id="detailsTitle"></h2>
+
+        <p id="detailsAuthor" class="details-author"></p>
+
+        <div class="details-line"></div>
+
+        <p id="detailsContent"></p>
+
+
+        <!-- COMMENTS -->
+
+        <div class="comments-section">
+
+            <h3>Comments</h3>
+
+            <div id="commentsContainer"></div>
+
+            <form id="commentForm">
+
+                <input
+                    id="commentInput"
+                    type="text"
+                    placeholder="Write a comment..."
+                    required
+                >
+
+                <button type="submit">
+                    Comment
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="about section">
+
+    <div class="about-grid">
+
+        <div>
+
+            <p class="eyebrow">
+                ABOUT BLOGSPACE
+            </p>
+
+            <h2>
+                A simple place for
+                meaningful ideas.
+            </h2>
+
+        </div>
+
+        <div>
+
+            <p>
+                BlogSpace is a simple blogging platform
+                created using HTML, CSS and JavaScript.
+            </p>
+
+            <p>
+                Readers can discover articles, search
+                posts, filter categories and interact
+                with content.
+            </p>
+
+            <p>
+                Writers can also create and publish
+                their own articles directly from the
+                website.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact" class="section contact">
+
+    <div class="section-header center">
+
+        <p class="eyebrow">
+            CONTACT
+        </p>
+
+        <h2>Get in Touch</h2>
+
+        <p>
+            Have a question or suggestion?
+            Send us a message.
+        </p>
+
+    </div>
+
+
+    <form id="contactForm" class="contact-form">
+
+        <div class="form-row">
+
+            <input
+                type="text"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                placeholder="Your Email"
+                required
+            >
+
+        </div>
+
+        <textarea
+            rows="6"
+            placeholder="Your Message"
+            required>
+        </textarea>
+
+        <button
+            type="submit"
+            class="primary-btn">
+            Send Message
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-top">
+
+        <div>
+
+            <div class="footer-logo">
+                Blog<span>Space</span>
+            </div>
+
+            <p>
+                Share ideas. Inspire people.
+            </p>
+
+        </div>
+
+
+        <div class="social-links">
+
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Instagram</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 BlogSpace. All rights reserved.
+        </p>
+
+        <p>
+            Built with HTML, CSS & JavaScript
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+```
+
+</body>
+
+</html>
